@@ -77,3 +77,6 @@ function ticTacToeChecker(gameboardAs2dArr){
 }
 
 //console.log(ticTacToeChecker([[1,0,1],[1,'',0],[2,1,2]]));
+function stopLight(){
+    
+}
