@@ -77,6 +77,52 @@ function ticTacToeChecker(gameboardAs2dArr){
 }
 
 //console.log(ticTacToeChecker([[1,0,1],[1,'',0],[2,1,2]]));
-function stopLight(){
+trafficLight();
+
+function trafficLight(){
+    let redElement = document.getElementById('red');
     
+    redElement.style.backgroundColor = 'red';
+    
+    let yellowElement = document.getElementById('yellow');
+    
+    yellowElement.style.backgroundColor = 'grey';
+    
+    let greenElement = document.getElementById('green');
+    
+    greenElement.style.backgroundColor = 'grey';
+    let colours = ['red', 'yellow', 'green', 'grey'];
+
+    document
+    .querySelector('button')
+    .addEventListener('click', changeState);
+    
+    
+    function changeState(){
+        if(redElement.style.backgroundColor == 'red'){
+
+            redElement.style.backgroundColor = 'grey';
+            yellowElement.style.backgroundColor = 'yellow';
+            greenElement.style.backgroundColor = 'grey';
+            console.log('red off');
+            console.log('click');
+
+        }else if(yellowElement.style.backgroundColor == 'yellow'){
+
+            yellowElement.style.backgroundColor = 'grey';
+            redElement.style.backgroundColor = 'grey';
+            greenElement.style.backgroundColor = 'green';
+            console.log('yellow off');
+            console.log('click');
+
+        }else if(greenElement.style.backgroundColor == 'green'){
+
+            greenElement.style.backgroundColor = 'grey';
+            redElement.style.backgroundColor = 'red';
+            yellowElement.style.backgroundColor = 'grey';
+            console.log('green off');
+            console.log('click');
+            
+        }
+    }
 }

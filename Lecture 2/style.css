@@ -23,21 +23,41 @@ button{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    
 }
 
-.light-display{
+.light{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /*background-color: #8A8A8A;*/
+    margin: 10px;
+    padding: 10px;
+}
+.red{
+    background-color: red;
+}
+
+.green{
+    background-color: green;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.grey{
+    background-color: #8A8A8A;
+}
+
+
+#light-display{
     width: 65%;
     height: 87%;
     border: 2px solid #A19F9D;
     border-radius: 15px;
     margin: 5px;
-}
-
-.light{
-    width: 50px;
-    height: 50px;
-    border-radius: 2;
-    background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
