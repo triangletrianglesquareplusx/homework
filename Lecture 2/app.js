@@ -81,16 +81,14 @@ trafficLight();
 
 function trafficLight(){
     let redElement = document.getElementById('red');
-    
     redElement.style.backgroundColor = 'red';
     
     let yellowElement = document.getElementById('yellow');
-    
     yellowElement.style.backgroundColor = 'grey';
     
     let greenElement = document.getElementById('green');
-    
     greenElement.style.backgroundColor = 'grey';
+    
     let colours = ['red', 'yellow', 'green', 'grey'];
 
     document
@@ -99,29 +97,29 @@ function trafficLight(){
     
     
     function changeState(){
-        if(redElement.style.backgroundColor == 'red'){
+        if(redElement.style.backgroundColor == colours[0]){
 
-            redElement.style.backgroundColor = 'grey';
-            yellowElement.style.backgroundColor = 'yellow';
-            greenElement.style.backgroundColor = 'grey';
-            console.log('red off');
-            console.log('click');
+            redElement.style.backgroundColor = colours[3];
+            yellowElement.style.backgroundColor = colours[1];
+            greenElement.style.backgroundColor = colours[3];
+            
+            
 
-        }else if(yellowElement.style.backgroundColor == 'yellow'){
+        }else if(yellowElement.style.backgroundColor == colours[1]){
 
-            yellowElement.style.backgroundColor = 'grey';
-            redElement.style.backgroundColor = 'grey';
-            greenElement.style.backgroundColor = 'green';
-            console.log('yellow off');
-            console.log('click');
+            yellowElement.style.backgroundColor = colours[3];
+            redElement.style.backgroundColor = colours[3];
+            greenElement.style.backgroundColor = colours[2];
+            
+            
 
-        }else if(greenElement.style.backgroundColor == 'green'){
+        }else if(greenElement.style.backgroundColor == colours[2]){
 
-            greenElement.style.backgroundColor = 'grey';
-            redElement.style.backgroundColor = 'red';
-            yellowElement.style.backgroundColor = 'grey';
-            console.log('green off');
-            console.log('click');
+            greenElement.style.backgroundColor = colours[3];
+            redElement.style.backgroundColor = colours[0];
+            yellowElement.style.backgroundColor = colours[3];
+            
+            
             
         }
     }
