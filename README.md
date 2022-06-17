@@ -1,2 +1,2 @@
 # homework
-[link for interactive demo](https://codepen.io/Preso91/pen/ZErPPYY)
+[link for interactive demo - Lecture 2](https://codepen.io/Preso91/pen/ZErPPYY)
