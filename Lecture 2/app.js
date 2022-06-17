@@ -103,23 +103,17 @@ function trafficLight(){
             yellowElement.style.backgroundColor = colours[1];
             greenElement.style.backgroundColor = colours[3];
             
-            
-
         }else if(yellowElement.style.backgroundColor == colours[1]){
 
             yellowElement.style.backgroundColor = colours[3];
             redElement.style.backgroundColor = colours[3];
             greenElement.style.backgroundColor = colours[2];
             
-            
-
-        }else if(greenElement.style.backgroundColor == colours[2]){
+        }else{
 
             greenElement.style.backgroundColor = colours[3];
             redElement.style.backgroundColor = colours[0];
             yellowElement.style.backgroundColor = colours[3];
-            
-            
             
         }
     }
