@@ -1,0 +1,21 @@
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 600px;
+    height: 600px;
+    background-color: aliceblue;
+    margin: 0 auto;
+}
+.item{
+    width: 60px;
+    height: 60px;
+    
+    display: inline-block;
+}
+
+.active{
+    border: 1px solid black;
+}
