@@ -1,4 +1,13 @@
 initiate();
+makeAllColoredSquaresTouchable();
+// let num = 29;
+// let random = Math.trunc(Math.random() * 29);
+// setInterval(()=>{
+//     console.log(num);
+//     console.log(Math.trunc(Math.random() * num));
+//     num--;
+// },2000) 
+
 
 function createSetNumberOfElements(elementTagName, number){
     let containerElement = document.querySelector('.container');
@@ -9,28 +18,18 @@ function createSetNumberOfElements(elementTagName, number){
     }
 }
 
-function attemptEventListenerBinding(){
-    //get items
-    let allItems = document.getElementsByClassName('container')[0]
-    .getElementsByClassName('item');
-    let allItemsAsArr = Array.from(allItems);
-    //simple way to attach event listener
-    allItemsAsArr.forEach(item=>item.addEventListener('click',()=>{
-        console.log('hey');
-    }))
+function getRandomElement(number){
+    let randomNumber = Math.trunc(Math.random() * number);
+    //FIX CLOSURE!!!!!
+    console.log(randomNumber + 'this is the first time');
     
-}
-
-function getRandomElement(elementToRandomize){
-    let allItems = document.getElementsByClassName('container')[0]
-    .getElementsByClassName('item');
-    let randomNumber = Math.trunc(Math.random() * 29) + 1;
-    //return allItems[randomNumber];
-    console.log(randomNumber);
-    let items = [...allItems].filter(item=>!item.classList.contains('active'));
-    console.log(items);
-    return items[randomNumber];
-
+    return function(){
+        let allItems = document.getElementsByClassName('container')[0]
+        .getElementsByClassName('item');
+        let items = [...allItems].filter(item=>!item.classList.contains('active'))[randomNumber];
+        randomNumber--;
+        return items;
+    }
 }
 
 function getRandomColorValue(){
@@ -42,11 +41,23 @@ function initiate(){
     
     createSetNumberOfElements('div',numberOfElements);
 
-    
+    const randomize = getRandomElement(numberOfElements);
     setInterval(()=>{
-        const randomElement = getRandomElement();
-        randomElement.style.backgroundColor = `rgb(${getRandomColorValue()}, ${getRandomColorValue()}, ${getRandomColorValue()})`;
-        randomElement.classList.add('active');
+        
+        const randomized = randomize();
+        randomized.style.backgroundColor = `rgb(${getRandomColorValue()}, ${getRandomColorValue()}, ${getRandomColorValue()})`;
+        randomized.classList.add('active');
         
     }, 2000)
+}
+
+function makeAllColoredSquaresTouchable(){
+    document
+    .getElementsByTagName('body')[0]
+    .addEventListener('click', (e)=>{
+        if(e.target.classList.contains('active')){
+            console.log('you clicked an active square!');
+            e.currentTarget.style.backgroundColor = e.target.style.backgroundColor;
+        }
+    })
 }
