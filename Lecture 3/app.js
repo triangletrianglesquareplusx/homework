@@ -11,20 +11,13 @@ function createSetNumberOfElements(elementTagName, number){
 }
 
 function getRandomElement(number){
-    let randomNumber = Math.trunc(Math.random() * number);
-    //FIX CLOSURE!!!!!
-    console.log(randomNumber + 'this is the first time');
     
     return function(){
-        randomNumber = Math.trunc(Math.random() * number);
+        let randomNumber = Math.trunc(Math.random() * number);
         let allItems = document.getElementsByClassName('container')[0]
         .getElementsByClassName('item');
-
         let inactiveItems = [...allItems].filter(item=>!item.classList.contains('active'))[randomNumber] || 0;
-        
-        console.log(randomNumber, number);
         number--;
-        console.log(randomNumber, number);
         return inactiveItems;
     }
 }
