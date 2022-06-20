@@ -34,7 +34,7 @@ function getRandomColorValue(){
 }
 
 function initiate(){
-    let numberOfElements = 30;
+    let numberOfElements = 50;
     let pElement = document.querySelector('p');
     createSetNumberOfElements('div',numberOfElements);
     const randomize = getRandomElement(numberOfElements);
