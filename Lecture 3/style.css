@@ -3,15 +3,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 0;
 }
 
 .container{
     max-width: 600px;
     max-height: 600px;
-    background-color: aliceblue;
     display: flex;
     flex-wrap: wrap;
+    padding: 1px;
 }
 
 .item{
@@ -21,8 +22,11 @@ body{
     margin: 2px;
     border: 1px solid black;
     border-radius: 2px;
+    
 }
 
 .active{
-    border: 1px solid black;
+    box-shadow: 3px 2px 2px grey;
+    cursor: crosshair;
 }
+

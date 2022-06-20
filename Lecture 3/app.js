@@ -1,13 +1,5 @@
 initiate();
 makeAllColoredSquaresTouchable();
-// let num = 29;
-// let random = Math.trunc(Math.random() * 29);
-// setInterval(()=>{
-//     console.log(num);
-//     console.log(Math.trunc(Math.random() * num));
-//     num--;
-// },2000) 
-
 
 function createSetNumberOfElements(elementTagName, number){
     let containerElement = document.querySelector('.container');
@@ -24,11 +16,16 @@ function getRandomElement(number){
     console.log(randomNumber + 'this is the first time');
     
     return function(){
+        randomNumber = Math.trunc(Math.random() * number);
         let allItems = document.getElementsByClassName('container')[0]
         .getElementsByClassName('item');
-        let items = [...allItems].filter(item=>!item.classList.contains('active'))[randomNumber];
-        randomNumber--;
-        return items;
+
+        let inactiveItems = [...allItems].filter(item=>!item.classList.contains('active'))[randomNumber] || 0;
+        
+        console.log(randomNumber, number);
+        number--;
+        console.log(randomNumber, number);
+        return inactiveItems;
     }
 }
 
@@ -38,17 +35,21 @@ function getRandomColorValue(){
 
 function initiate(){
     let numberOfElements = 30;
-    
+    let pElement = document.querySelector('p');
     createSetNumberOfElements('div',numberOfElements);
-
     const randomize = getRandomElement(numberOfElements);
-    setInterval(()=>{
+    let myInterval = setInterval(()=>{
         
         const randomized = randomize();
+        if(!randomized){
+            pElement.textContent = 'Completed';
+            clearInterval(myInterval);
+            return;
+        }
         randomized.style.backgroundColor = `rgb(${getRandomColorValue()}, ${getRandomColorValue()}, ${getRandomColorValue()})`;
         randomized.classList.add('active');
         
-    }, 2000)
+    }, 1000)
 }
 
 function makeAllColoredSquaresTouchable(){
@@ -56,7 +57,6 @@ function makeAllColoredSquaresTouchable(){
     .getElementsByTagName('body')[0]
     .addEventListener('click', (e)=>{
         if(e.target.classList.contains('active')){
-            console.log('you clicked an active square!');
             e.currentTarget.style.backgroundColor = e.target.style.backgroundColor;
         }
     })
