@@ -1,6 +1,13 @@
-//attemptEventListenerBinding();
-changeBackGroundColorAtInterval();
+initiate();
 
+function createSetNumberOfElements(elementTagName, number){
+    let containerElement = document.querySelector('.container');
+    for(let i=0;i<number;i++){
+        let newElement = document.createElement(elementTagName);
+        newElement.classList.add('item');
+        containerElement.append(newElement);
+    }
+}
 
 function attemptEventListenerBinding(){
     //get items
@@ -14,19 +21,32 @@ function attemptEventListenerBinding(){
     
 }
 
-function changeBackGroundColorAtInterval(){
+function getRandomElement(elementToRandomize){
     let allItems = document.getElementsByClassName('container')[0]
     .getElementsByClassName('item');
+    let randomNumber = Math.trunc(Math.random() * 29) + 1;
+    //return allItems[randomNumber];
+    console.log(randomNumber);
+    let items = [...allItems].filter(item=>!item.classList.contains('active'));
+    console.log(items);
+    return items[randomNumber];
+
+}
+
+function getRandomColorValue(){
+    return Math.trunc(Math.random() * 255);
+}
+
+function initiate(){
+    let numberOfElements = 30;
+    
+    createSetNumberOfElements('div',numberOfElements);
+
+    
+    setInterval(()=>{
+        const randomElement = getRandomElement();
+        randomElement.style.backgroundColor = `rgb(${getRandomColorValue()}, ${getRandomColorValue()}, ${getRandomColorValue()})`;
+        randomElement.classList.add('active');
         
-            // setTimeout(()=>{
-            //     //try to find all items
-                
-        
-            //     let randomNumber = Math.trunc(Math.random() * 29);
-            //     let itemToChange = allItems[randomNumber];
-            //     if(itemToChange.textContent == ''){
-            //         itemToChange.style.backgroundColor = 'red';
-            //         itemToChange.classList.add('active');
-            //     }
-            // }, 1000);    
+    }, 2000)
 }
